@@ -1,0 +1,5 @@
+/bin
+/obj
+/.idea
+MLib.sln.DotSettings.user
+*.user
