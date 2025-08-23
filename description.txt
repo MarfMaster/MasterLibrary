@@ -1,0 +1,2 @@
+A library containing a bunch of basic abstract classes for many ModClasses. 
+Feel free to check it out and use it if you like it. 
