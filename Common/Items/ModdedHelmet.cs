@@ -1,4 +1,3 @@
-using MLib.Common.Utilities;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -52,19 +51,6 @@ public abstract class ModdedHelmet : ModItem
         Item.value = Value;
     }
 
-    /// <summary>
-    ///     Override this to add any effects to this armor piece that get applied to the player when equipped.
-    /// </summary>
-    /// <param name="player"></param>
-    public virtual void EquipEffects(Player player)
-    {
-    }
-
-    public override void UpdateEquip(Player player)
-    {
-        EquipEffects(player);
-    }
-
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
         if (HasArmorSetBonusName == null) return false;
@@ -74,14 +60,10 @@ public abstract class ModdedHelmet : ModItem
         return false;
     }
 
-    public virtual void ArmorSetBonus(Player player)
-    {
-    }
-
     public override void UpdateArmorSet(Player player)
     {
-        player.setBonus = Language.GetTextValue(Mod.GetLocalizationKey(SetBonusTextLocation), SetBonusStat0, SetBonusStat1, SetBonusStat2,
+        player.setBonus = Language.GetTextValue(Mod.GetLocalizationKey(SetBonusTextLocation), SetBonusStat0,
+            SetBonusStat1, SetBonusStat2,
             SetBonusStat3);
-        ArmorSetBonus(player);
     }
 }

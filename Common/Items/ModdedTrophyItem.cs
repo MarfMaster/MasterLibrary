@@ -12,8 +12,9 @@ public abstract class ModdedTrophyItem : ModdedBlockItem
         Item.ResearchUnlockCount = 1;
     }
 
-    public override void CustomSetDefaults()
+    public override void SetDefaults()
     {
+        base.SetDefaults();
         Item.rare = ItemRarityID.Blue;
         Item.value = PriceByRarity.fromItem(Item);
     }

@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Xna.Framework;
-using MLib.Common.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -37,6 +36,8 @@ public abstract class ModdedWormBase : ModNPC
     public string NameLocalizationKey;
 
     private bool startDespawning;
+
+    public override string LocalizationCategory => base.LocalizationCategory + ".Worms";
     /*  ai[] usage:
      *
      *  ai[0] = "follower" segment, the segment that's following this segment
@@ -593,18 +594,9 @@ public abstract class ModdedWormBody : ModdedWormBase
     public override string LocalizationCategory => base.LocalizationCategory + "." + Name.Replace("Body", "");
     public sealed override WormSegmentType SegmentType => WormSegmentType.Body;
 
-    public virtual void CustomSetDefaults()
-    {
-    }
-
-    public override void SetDefaults()
-    {
-        NameLocalizationKey = LocalizationCategory + "." + "DisplayName";
-        CustomSetDefaults();
-    }
-
     public override void ModifyTypeName(ref string typeName)
     {
+        NameLocalizationKey = Mod.GetLocalizationKey(LocalizationCategory + "." + "DisplayName");
         typeName = Language.GetTextValue(NameLocalizationKey);
     }
 
@@ -664,18 +656,9 @@ public abstract class ModdedWormTail : ModdedWormBase
     public override string LocalizationCategory => base.LocalizationCategory + "." + Name.Replace("Tail", "");
     public sealed override WormSegmentType SegmentType => WormSegmentType.Tail;
 
-    public virtual void CustomSetDefaults()
-    {
-    }
-
-    public override void SetDefaults()
-    {
-        NameLocalizationKey = LocalizationCategory + "." + "DisplayName";
-        CustomSetDefaults();
-    }
-
     public override void ModifyTypeName(ref string typeName)
     {
+        NameLocalizationKey = Mod.GetLocalizationKey(LocalizationCategory + "." + "DisplayName");
         typeName = Language.GetTextValue(NameLocalizationKey);
     }
 

@@ -16,10 +16,6 @@ public abstract class ModdedWallTile : ModWall
 
     public abstract Color MapColor { get; }
 
-    public virtual void CustomSetStaticDefaults()
-    {
-    }
-
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = PlayerPlaced;
@@ -28,6 +24,5 @@ public abstract class ModdedWallTile : ModWall
         VanillaFallbackOnModDeletion = VanillaFallbackTile;
 
         AddMapEntry(MapColor);
-        CustomSetStaticDefaults();
     }
 }

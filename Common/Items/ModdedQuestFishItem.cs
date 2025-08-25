@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -6,23 +5,23 @@ using Terraria.ModLoader;
 namespace MLib.Common.Items;
 
 /// <summary>
-/// Requires for you to add a custom fishing condition in ModPlayer to be catchable.
+///     Requires for you to add a custom fishing condition in ModPlayer to be catchable.
 /// </summary>
 public abstract class ModdedQuestFishItem : ModItem
 {
-    public virtual bool CustomAnglerQuestCondition() { return true; }
     public override string LocalizationCategory => "Items.QuestFish";
 
-    public override void SetStaticDefaults() 
+    public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 2;
         ItemID.Sets.CanBePlacedOnWeaponRacks[Type] = true; // All vanilla fish can be placed in a weapon rack.
 
         this.GetLocalization("Description", () => "How the angler describes this fish.");
-        this.GetLocalization("CatchLocation", () => "The conditions this fish can be caught under, seen at the bottom of the Quest popup.");
+        this.GetLocalization("CatchLocation",
+            () => "The conditions this fish can be caught under, seen at the bottom of the Quest popup.");
     }
 
-    public override void SetDefaults() 
+    public override void SetDefaults()
     {
         // DefaultToQuestFish sets quest fish properties.
         // Of note, it sets rare to ItemRarityID.Quest, which is the special rarity for quest items.
@@ -30,11 +29,19 @@ public abstract class ModdedQuestFishItem : ModItem
         Item.DefaultToQuestFish();
     }
 
-    public override bool IsQuestFish() => true; // Makes the item a quest fish
+    public override bool IsQuestFish()
+    {
+        return true;
+        // Makes the item a quest fish
+    }
 
-    public override bool IsAnglerQuestAvailable() => CustomAnglerQuestCondition(); // Makes the quest only appear in hard mode. Adding a '!' before Main.hardMode makes it ONLY available in pre-hardmode.
+    public override bool IsAnglerQuestAvailable()
+    {
+        return false;
+        // Makes the quest only appear in hard mode. Adding a '!' before Main.hardMode makes it ONLY available in pre-hardmode.
+    }
 
-    public override void AnglerQuestChat(ref string description, ref string catchLocation) 
+    public override void AnglerQuestChat(ref string description, ref string catchLocation)
     {
         // How the angler describes the fish to the player.
         description = Language.GetTextValue(this.GetLocalizationKey("Description"));

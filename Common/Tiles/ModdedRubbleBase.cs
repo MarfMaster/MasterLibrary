@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -52,6 +53,7 @@ public abstract class ModdedRubbleFake : ModdedRubbleBase
 
     public virtual void RubblePlacementLine()
     {
+        FlexibleTileWand.RubblePlacementMedium.AddVariations(MaterialItemType, Type, 0, 1, 2, 3, 4, 5); //example
     }
 
     public override void SetStaticDefaults()

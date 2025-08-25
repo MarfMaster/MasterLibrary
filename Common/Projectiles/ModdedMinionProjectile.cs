@@ -39,11 +39,6 @@ public abstract class ModdedMinionProjectile : ModProjectile
         ProjectileID.Sets.MinionSacrificable[Type] = true;
         ProjectileID.Sets.CultistIsResistantTo[Type] = true;
         ProjectileID.Sets.SummonTagDamageMultiplier[Projectile.type] = SummonTagDamagePercentage / 100f;
-        CustomSetStaticDefaults();
-    }
-
-    public virtual void CustomSetStaticDefaults()
-    {
     }
 
     public override void SetDefaults()
@@ -57,11 +52,6 @@ public abstract class ModdedMinionProjectile : ModProjectile
         Projectile.minionSlots = MinionSlotsRequired;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
-        CustomSetDefaults();
-    }
-
-    public virtual void CustomSetDefaults()
-    {
     }
 
     public override bool MinionContactDamage()
@@ -94,12 +84,7 @@ public abstract class ModdedMinionProjectile : ModProjectile
         var player = Main.player[Projectile.owner];
 
         if (!CheckActive(player)) return;
-        CustomAI(player);
-    }
-
-    public virtual void
-        CustomAI(Player player) //example mod minion code with a few extras, you should override these methods to fit your needs
-    {
+        
         GeneralBehavior(player, out var vectorToIdlePosition, out var distanceToIdlePosition);
         SearchForTargets(player, out var foundTarget, out var distanceFromTarget, out var targetCenter);
         Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);

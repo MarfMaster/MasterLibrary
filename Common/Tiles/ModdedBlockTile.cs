@@ -22,10 +22,6 @@ public abstract class ModdedBlockTile : ModTile
     public abstract bool MergesWithItself { get; }
     public abstract bool NameShowsOnMapHover { get; }
 
-    public virtual void CustomSetStaticDefaults()
-    {
-    }
-
     public override void SetStaticDefaults()
     {
         Main.tileSolid[Type] = SolidBlock;
@@ -52,7 +48,5 @@ public abstract class ModdedBlockTile : ModTile
             Main.tileMerge[Type][VanillaFallbackTileAndMerge] = true;
             Main.tileMerge[VanillaFallbackTileAndMerge][Type] = true;
         }
-
-        CustomSetStaticDefaults();
     }
 }

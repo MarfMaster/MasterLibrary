@@ -60,18 +60,9 @@ public abstract class ModdedHostileProjectile : ModProjectile
         set => Projectile.ai[2] = value;
     }
 
-    public virtual void CustomSetStaticDefaults()
-    {
-    }
-
     public override void SetStaticDefaults()
     {
         Main.projFrames[Projectile.type] = Frames;
-        CustomSetStaticDefaults();
-    }
-
-    public virtual void CustomSetDefaults()
-    {
     }
 
     public override void SetDefaults()
@@ -83,13 +74,8 @@ public abstract class ModdedHostileProjectile : ModProjectile
         Projectile.hostile = true;
         Projectile.tileCollide = !PassThroughBlocks;
         Projectile.penetrate = 1 + Pierce;
-        CustomSetDefaults();
     }
-
-    public virtual void CustomAI()
-    {
-    }
-
+    
     public override void AI()
     {
         Projectile.rotation = Projectile.velocity.ToRotation() + RotationHelper;
@@ -105,7 +91,5 @@ public abstract class ModdedHostileProjectile : ModProjectile
                 if (Projectile.frame >= Main.projFrames[Projectile.type]) Projectile.frame = 0;
             }
         }
-
-        CustomAI();
     }
 }

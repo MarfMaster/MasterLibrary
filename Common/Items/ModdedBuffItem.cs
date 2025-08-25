@@ -16,10 +16,6 @@ public abstract class ModdedBuffItem : ModItem
     public abstract int Rarity { get; }
     public abstract int Value { get; }
 
-    public virtual void CustomSetDefaults()
-    {
-    }
-
     public override void SetDefaults()
     {
         Item.width = Width;
@@ -35,6 +31,5 @@ public abstract class ModdedBuffItem : ModItem
         Item.useTurn = true;
         Item.useAnimation = 15;
         Item.useTime = 15;
-        CustomSetDefaults();
     }
 }

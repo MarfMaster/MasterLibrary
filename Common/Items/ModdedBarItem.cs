@@ -7,6 +7,5 @@ public abstract class ModdedBarItem : ModdedBlockItem
     public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 25;
-        CustomSetStaticDefaults();
     }
 }

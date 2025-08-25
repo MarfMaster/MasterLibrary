@@ -48,10 +48,6 @@ public abstract class ModdedBasicItem : ModItem
     /// </summary>
     public abstract bool UseTurn { get; }
 
-    public virtual void CustomSetDefaults()
-    {
-    }
-
     public override void SetDefaults()
     {
         Item.damage = Damage;
@@ -67,6 +63,5 @@ public abstract class ModdedBasicItem : ModItem
         Item.noMelee = !DealsContactDamage;
         Item.UseSound = UseSound;
         Item.useTurn = UseTurn;
-        CustomSetDefaults();
     }
 }

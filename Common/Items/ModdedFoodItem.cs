@@ -13,15 +13,10 @@ public abstract class ModdedFoodItem : ModItem
     public abstract int Rarity { get; }
     public abstract int Value { get; }
 
-    public virtual void CustomSetDefaults()
-    {
-    }
-
     public override void SetDefaults()
     {
         Item.rare = Rarity;
         Item.value = Value;
         Item.DefaultToFood(Width, Height, BuffType, BuffTime, UsesGulpSound);
-        CustomSetDefaults();
     }
 }

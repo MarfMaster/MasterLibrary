@@ -32,16 +32,11 @@ public abstract class ModdedHostileNPC : ModNPC
     public override void SetStaticDefaults()
     {
         Main.npcFrameCount[Type] = TotalAnimationFrames;
-        CustomSetStaticDefaults();
     }
 
     //public enum ActionState;
     //Declare and use these two, they're handy and make code readable
     //public enum Frames;
-
-    public virtual void CustomSetStaticDefaults()
-    {
-    }
 
     public override void SetDefaults()
     {
@@ -58,10 +53,5 @@ public abstract class ModdedHostileNPC : ModNPC
 
         Banner = Type;
         BannerItem = BannerItemType;
-        CustomSetDefaults();
-    }
-
-    public virtual void CustomSetDefaults()
-    {
     }
 }

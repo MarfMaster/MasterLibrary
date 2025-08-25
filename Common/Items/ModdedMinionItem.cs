@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using MLib.Common.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -85,7 +84,8 @@ public abstract class ModdedMinionItem : ModItem
             if (ttindex != -1)
                 tooltips.Insert(ttindex + 1,
                     new TooltipLine(Mod, "SummonTagDmgPercent",
-                        Language.GetTextValue(Mod.GetLocalizationKey("CommonItemTooltip.Summon.TagDmgMult"), (int)SummonTagDmgPercentage)));
+                        Language.GetTextValue(Mod.GetLocalizationKey("CommonItemTooltip.Summon.TagDmgMult"),
+                            (int)SummonTagDmgPercentage)));
         }
 
         CustomModifyTooltips(tooltips);

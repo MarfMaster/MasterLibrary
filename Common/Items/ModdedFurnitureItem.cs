@@ -12,24 +12,14 @@ public abstract class ModdedFurnitureItem : ModItem
     public abstract int MaterialType { get; }
     public abstract int MaterialAmount { get; }
 
-    public virtual void CustomSetStaticDefaults()
-    {
-    }
-
     public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 1;
-        CustomSetStaticDefaults();
-    }
-
-    public virtual void CustomSetDefaults()
-    {
     }
 
     public override void SetDefaults()
     {
         Item.DefaultToPlaceableTile(TileType);
-        CustomSetDefaults();
     }
 
     /// <summary>
