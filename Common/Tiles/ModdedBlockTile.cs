@@ -19,12 +19,6 @@ public abstract class ModdedBlockTile : ModTile
 
     public abstract SoundStyle TileMineSound { get; }
     public abstract Color MapColor { get; }
-
-    /// <summary>
-    ///     Changes the style of any waterfall produced by this block. Defaults to 0 for normal water.
-    /// </summary>
-    public abstract int WaterfallStyleID { get; }
-
     public abstract bool MergesWithItself { get; }
     public abstract bool NameShowsOnMapHover { get; }
 
@@ -60,10 +54,5 @@ public abstract class ModdedBlockTile : ModTile
         }
 
         CustomSetStaticDefaults();
-    }
-
-    public override void ChangeWaterfallStyle(ref int style)
-    {
-        style = WaterfallStyleID;
     }
 }

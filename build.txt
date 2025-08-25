@@ -1,3 +1,4 @@
 displayName = Master Library
 author = MarfMaster
-version = 0.6
+version = 0.6.6
+homepage = https://github.com/MarfMaster/MasterLibrary
