@@ -7,6 +7,7 @@ namespace MLib.Common.Items;
 
 public abstract class ModdedTorchItem : ModItem
 {
+    public override string LocalizationCategory => "Items.Tiles.Furniture";
     public abstract int TorchTileType { get; }
     public abstract Color LightColor { get; }
     public abstract int TorchCraftAmount { get; }
