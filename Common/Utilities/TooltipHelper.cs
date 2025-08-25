@@ -18,10 +18,11 @@ public class TooltipHelper
        public static void GlobalRegisterExtraTooltips(Mod mod, List<int> itemIDs, Dictionary<int, string> tooltips, string extraName)
        {
               foreach (var itemId in itemIDs)
-              {  
-                     bool vanilla = ItemID.Search.ContainsId(itemId);
-                     mod.GetLocalization((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + ModContent.GetModItem(itemId).Name) + "." + extraName, () => "This is an extra tooltip.");
-                     tooltips.Add(itemId, mod.GetLocalizationKey((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + ModContent.GetModItem(itemId).Name) + "." + extraName));
+              {
+                     ItemID.Search.TryGetName(itemId, out string itemName); 
+                     bool vanilla = !itemName.Contains(mod.Name);
+                     mod.GetLocalization((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + "." + ModContent.GetModItem(itemId).Name) + "." + extraName, () => "This is an extra tooltip.");
+                     tooltips.Add(itemId, mod.GetLocalizationKey((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + "." + ModContent.GetModItem(itemId).Name) + "." + extraName));
               }
        }       
        /// <summary>
@@ -30,10 +31,11 @@ public class TooltipHelper
        /// If you want to add multiple tooltips to a single item, you'll have to use multiple calls and dictionaries.
        /// </summary>
        public static void SimpleRegisterExtraTooltips(Mod mod, int itemId, Dictionary<int, string> tooltips, string extraName)
-       {                    
-              bool vanilla = ItemID.Search.ContainsId(itemId);
-              mod.GetLocalization((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + ModContent.GetModItem(itemId).Name) + "." + extraName, () => "This is an extra tooltip.");
-              tooltips.Add(itemId, mod.GetLocalizationKey((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + ModContent.GetModItem(itemId).Name) + "." + extraName));
+       {
+              ItemID.Search.TryGetName(itemId, out string itemName); 
+              bool vanilla = !itemName.Contains(mod.Name);
+              mod.GetLocalization((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + "." + ModContent.GetModItem(itemId).Name) + "." + extraName, () => "This is an extra tooltip.");
+              tooltips.Add(itemId, mod.GetLocalizationKey((vanilla ? "Items.Vanilla." + ItemID.Search.GetName(itemId) : ModContent.GetModItem(itemId).LocalizationCategory + "." + ModContent.GetModItem(itemId).Name) + "." + extraName));
 
        }
        /// <summary>
