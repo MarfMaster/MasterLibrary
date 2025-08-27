@@ -62,26 +62,27 @@ public abstract class ModdedTorchItem : ModItem
             new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X,
                 player.itemLocation.Y - 14f + player.velocity.Y), true);
 
-        Lighting.AddLight(position, LightColor.R, LightColor.G, LightColor.B);
+        Lighting.AddLight(position, new Vector3(LightColor.R, LightColor.G, LightColor.B) * 0.005f);
     }
 
     public override void PostUpdate()
     {
+        Vector3 lightColor = new Vector3(LightColor.R, LightColor.G, LightColor.B) * 0.005f;
         if (CanFunctionInWater && CanFunctionInLava)
         {
-            Lighting.AddLight(Item.Center, LightColor.R, LightColor.G, LightColor.B);
+            Lighting.AddLight(Item.Center, lightColor);
         }
         else if (!CanFunctionInWater && CanFunctionInLava)
         {
-            if (!Item.wet) Lighting.AddLight(Item.Center, LightColor.R, LightColor.G, LightColor.B);
+            if (!Item.wet) Lighting.AddLight(Item.Center, lightColor);
         }
         else if (CanFunctionInWater && !CanFunctionInLava)
         {
-            if (!Item.lavaWet) Lighting.AddLight(Item.Center, LightColor.R, LightColor.G, LightColor.B);
+            if (!Item.lavaWet) Lighting.AddLight(Item.Center, lightColor);
         }
         else if (!Item.lavaWet && !Item.wet)
         {
-            Lighting.AddLight(Item.Center, LightColor.R, LightColor.G, LightColor.B);
+            Lighting.AddLight(Item.Center, lightColor);
         }
     }
 

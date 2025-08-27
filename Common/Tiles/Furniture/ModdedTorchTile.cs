@@ -124,9 +124,9 @@ public abstract class ModdedTorchTile : ModTile
 
         if (tile.TileFrameX < 66)
         {
-            r = LightColor.R;
-            g = LightColor.G;
-            b = LightColor.B;
+            r = LightColor.R * 0.005f;
+            g = LightColor.G * 0.005f;
+            b = LightColor.B * 0.005f;
         }
     }
 
@@ -154,6 +154,7 @@ public abstract class ModdedTorchTile : ModTile
         var zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
 
         var randSeed = Main.TileFrameSeed ^ (ulong)(((long)j << 32) | (uint)i); // Don't remove any casts.
+        Color color = new Color(100, 100, 100, 0);
         var width = 20;
         var height = 20;
         int frameX = tile.TileFrameX;
@@ -167,7 +168,7 @@ public abstract class ModdedTorchTile : ModTile
             spriteBatch.Draw(flameTexture.Value,
                 new Vector2(i * 16 - (int)Main.screenPosition.X - (width - 16f) / 2f + xx,
                     j * 16 - (int)Main.screenPosition.Y + offsetY + yy) + zero,
-                new Rectangle(frameX, frameY, width, height), LightColor, 0f, default, 1f, SpriteEffects.None, 0f);
+                new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
         }
     }
 
