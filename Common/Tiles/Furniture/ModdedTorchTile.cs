@@ -17,8 +17,7 @@ public abstract class ModdedTorchTile : ModTile
     public abstract int SparkleDustType { get; }
     public abstract Color LightColor { get; }
     public abstract Color MapColor { get; }
-    public abstract bool CanFunctionInWater { get; }
-    public abstract bool CanFunctionInLava { get; }
+    public abstract bool CanFunctionInLiquids { get; }
     public abstract int VanillaFallbackTile { get; }
 
     /// <summary>
@@ -39,7 +38,7 @@ public abstract class ModdedTorchTile : ModTile
         Main.tileSolid[Type] = false;
         Main.tileNoAttach[Type] = true;
         Main.tileNoFail[Type] = true;
-        Main.tileWaterDeath[Type] = CanFunctionInWater;
+        Main.tileWaterDeath[Type] = CanFunctionInLiquids;
         TileID.Sets.FramesOnKillWall[Type] = true;
         TileID.Sets.DisableSmartCursor[Type] = true;
         TileID.Sets.DisableSmartInteract[Type] = true;
@@ -68,11 +67,11 @@ public abstract class ModdedTorchTile : ModTile
         TileObjectData.newAlternate.AnchorWall = true;
         TileObjectData.addAlternate(0);
         */
-        TileObjectData.newTile.WaterDeath = CanFunctionInWater;
+        TileObjectData.newTile.WaterDeath = !CanFunctionInLiquids;
         TileObjectData.newTile.WaterPlacement =
-            CanFunctionInWater ? LiquidPlacement.Allowed : LiquidPlacement.NotAllowed;
-        TileObjectData.newTile.LavaDeath = CanFunctionInLava;
-        TileObjectData.newTile.LavaPlacement = CanFunctionInLava ? LiquidPlacement.Allowed : LiquidPlacement.NotAllowed;
+            CanFunctionInLiquids ? LiquidPlacement.Allowed : LiquidPlacement.NotAllowed;
+        TileObjectData.newTile.LavaDeath = !CanFunctionInLiquids;
+        TileObjectData.newTile.LavaPlacement = CanFunctionInLiquids ? LiquidPlacement.Allowed : LiquidPlacement.NotAllowed;
 
         TileObjectData.addTile(Type);
 
